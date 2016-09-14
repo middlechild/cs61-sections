@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int main(int argc, char* argv[]){
+int main(int argc, char* argv[]) {
     int year = 2016;
     char class[] = "CS 61";
     double grade = 3.67;

@@ -1,4 +1,4 @@
-all: heap fibloop fibrec var
+all: heap fibrec var
 
 O ?= -O0
 
@@ -23,7 +23,7 @@ var: var.o
 
 clean: clean-main
 clean-main:
-	$(call run,rm -f heap *.o core *.core,CLEAN)
+	$(call run,rm -f heap fibrec var *.o core *.core,CLEAN)
 	$(call run,rm -rf out $(DEPSDIR) *.dSYM)
 
 .PHONY: all clean clean-main

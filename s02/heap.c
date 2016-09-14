@@ -42,7 +42,7 @@ heap* heap_init_from_args(int argc, char* argv[]) {
     memset(new_heap, 0, sizeof(*new_heap));
     // allocate some space for array items
     int array_capacity = 8;
-    new_heap->array = (int*) malloc(array_capacity);
+    new_heap->array = (int*) malloc(array_capacity * sizeof(int)); // !!!
 
     int size = 0;
     int k;
@@ -51,7 +51,7 @@ heap* heap_init_from_args(int argc, char* argv[]) {
             if (size >= array_capacity) {
                 // This is the "vector pattern" from C Patterns (CS61 wiki)!
                 array_capacity *= 2;
-                realloc(new_heap->array, array_capacity);
+                realloc(new_heap->array, array_capacity * sizeof(int));
             }
             new_heap->array[size] = k;
             ++size;
@@ -79,7 +79,7 @@ void heap_free(heap* h) {
     free(h);
 }
 
-int main(int argc, char* argv[]){
+int main(int argc, char* argv[]) {
     if (argc == 1) {
         printf("Usage: ./heap #1 #2 ...\n");
         return 0;
@@ -88,6 +88,6 @@ int main(int argc, char* argv[]){
     heap* h = heap_init_from_args(argc, argv);
     heap_max_heapify(h);
     heap_print(h);
-    heap_free((heap*) &h);
+    heap_free(h);
     return 0;
 }
