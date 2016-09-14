@@ -1,4 +1,4 @@
-all: heap
+all: heap fibloop fibrec var
 
 O ?= -O0
 
@@ -13,6 +13,12 @@ heap: heap.o
 	$(CC) $(CFLAGS) $(O) -o $@ $^ $(LIBS)
 
 fibloop: fibloop.o
+	$(CC) $(CFLAGS) $(O) -o $@ $^ $(LIBS)
+
+fibrec: fibrec.o
+	$(CC) $(CFLAGS) $(O) -o $@ $^ $(LIBS)
+
+var: var.o
 	$(CC) $(CFLAGS) $(O) -o $@ $^ $(LIBS)
 
 clean: clean-main
