@@ -1,0 +1,28 @@
+---fibrec.c---
+break (b):
+    b main
+backtrace (bt)
+frame
+step (s)
+next (n)
+print (p):
+    p n
+advance (adv):
+    adv fib
+finish
+
+---var.c---
+examine (x):
+    x/1dw year - @
+    x/1dw &year - 2016
+    x/1dg &year - some weird number
+    x/1fg &grade - 3.6699999999999999
+    x/1xw &hx - 0xdeadbeef
+    x/4xb &hx - 0xef    0xbe    0xad    0xde    (little endian!!!)
+    x/1tw &bn - 01010101 01010101 01010101 01010101
+    x/1ag &p - @
+    x/s class - "CS 61"
+    x/1cb class - 67 'C'
+    x/6cb class - 67 'C'  83 'S'  32 ' '  54 '6'  49 '1'  0 '\000'
+
+valgrind --tool=memcheck --leak-check=full ./membug1
