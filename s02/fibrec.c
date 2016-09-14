@@ -12,7 +12,7 @@ int main(int argc, char* argv[]){
         printf("Usage: ./fib n\n");
         return 0;
     }
-    int res = fib(argv[1]);
-    printf("%d! = %d\n", argv[1], res);
+    int n = atoi(argv[1]), res = fib(n);
+    printf("%d! = %d\n", n, res);
     return 0;
 }
