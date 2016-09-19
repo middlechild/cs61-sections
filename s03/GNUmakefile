@@ -1,19 +1,19 @@
 # Default optimization level
-O ?= 0
+O ?= -O3
 
-PROGRAMS = mymalloc_driver add
+PROGRAMS = fib add
 all: $(PROGRAMS)
 
 include ../common/rules.mk
 
 %.o: %.c $(BUILDSTAMP)
-	$(CC) $(CFLAGS) $(DEPCFLAGS) -o $@ -c $<
+	$(CC) $(CFLAGS) $(O) $(DEPCFLAGS) -o $@ -c $<
 
 add: add.o
-	$(CC) $(CFLAGS) $(SAFE_CFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) $(O) $(SAFE_CFLAGS) -o $@ $^
 
-mymalloc_driver: mymalloc.o mymalloc_driver.o
-	$(CC) $(CFLAGS) $(SAFE_CFLAGS) -o $@ $^
+fib: fib.o fib.o
+	$(CC) $(CFLAGS) $(O) $(SAFE_CFLAGS) -o $@ $^
 
 clean:
 	rm -f $(PROGRAMS) *.o *.dSYM *.core
