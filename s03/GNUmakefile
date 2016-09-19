@@ -1,5 +1,5 @@
 # Default optimization level
-O ?= -O3
+O ?= -O0
 
 PROGRAMS = fib add
 all: $(PROGRAMS)
