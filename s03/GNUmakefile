@@ -1,7 +1,10 @@
 # Default optimization level
 O ?= -O0
 
-PROGRAMS = add fib add-O0 add-O3
+PROGRAMS = fib \
+	add-global add-global-O0 add-global-O3 \
+	add-local add-local-O0 add-local-O3 \
+	add-arguments add-arguments-O0 add-arguments-O3
 all: $(PROGRAMS)
 
 include ../common/rules.mk
@@ -21,22 +24,13 @@ include ../common/rules.mk
 %-O3.o: %.c $(BUILDSTAMP)
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(DEPCFLAGS) -O3 -o $@ -c $<
 
-add: add.o
+%: %.o
 	$(CC) $(CFLAGS) $(O) -o $@ $^
 
-add-O0: add-O0.o
+%-O0: %-O0.o
 	$(CC) $(CFLAGS) -O0 -o $@ $^
 
-add-O3: add-O3.o
-	$(CC) $(CFLAGS) -O3 -o $@ $^
-
-fib: fib.o
-	$(CC) $(CFLAGS) $(O) -o $@ $^
-
-fib-O0: fib-O0.o
-	$(CC) $(CFLAGS) -O0 -o $@ $^
-
-fib-O3: fib-O3.o
+%-O3: %-O3.o
 	$(CC) $(CFLAGS) -O3 -o $@ $^
 
 clean:
@@ -44,3 +38,4 @@ clean:
 	rm -rf $(DEPSDIR) *.dSYM
 
 .PHONY: all clean
+.PRECIOUS: %-O0.o %-O3.o

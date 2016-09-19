@@ -1,0 +1,12 @@
+add
+add-O0
+add-O3
+add-global
+add-global-O0
+add-global-O3
+add-local
+add-local-O0
+add-local-O3
+add-arguments
+add-arguments-O0
+add-arguments-O3
