@@ -8,7 +8,6 @@
 * [C++ Patterns](#c-patterns)
   - [STL Containers](#standard-template-library-stl-containers)
   - [The `system_allocator<>` class in PSet 1](#understanding-system_allocator-in-pset-1)
-  - [Simple C++ Exercises](#simple-c-exercises)
 * [Programming Exercises](#programming-exercises)
   - [Greetings!](#greetings)
   - [Image Inverter](#image-inverter)
@@ -315,7 +314,7 @@ STL containers and algorithms rely on an abstraction called the *iterator*. An i
 
 The most important iterator methods are `container.begin()`, which returns an
 iterator that points to the “beginning” of the container (in a vector, this is
-the first element), and `container.end()`, which returns an interator that
+the first element), and `container.end()`, which returns an iterator that
 points to the “end” of the container and also represents absent elements (in a
 vector, this points one past the last element).
 
@@ -400,7 +399,7 @@ Comparison for key type is required.
 #include <string>
 
 std::map<int, std::string> my_map;
-my_map[1] = "one";                   // Insert into map (with overwrite senamtics)
+my_map[1] = "one";                   // Insert into map (with overwrite semantics)
 std::string s = my_map[1];           // Map lookup (inserts default if not found)
 
 // test if key is in map
@@ -563,11 +562,11 @@ public:
 };
 ```
 
-According to the comments, this code lets C++ STL containers use the system allocator instead of the debugging allcoator. How does it work? Let's take a closer look.
+According to the comments, this code lets C++ STL containers use the system allocator instead of the debugging allocator. How does it work? Let's take a closer look.
 
 This class defines two methods, `allocate()` and `deallocate()`. Within these method, `malloc` and `free` are invoked. The parentheses around `malloc` and `free` ensure that these are the *system* `malloc` and `free`, not the (possibly-macro-defined) `m61_malloc` and `m61_free`.
 
-Now look at `basealloc.cc` within the pset directory, where STL containers are used. Pay attention to how the contrainers are declared. For example, the vector:
+Now look at `basealloc.cc` within the pset directory, where STL containers are used. Pay attention to how the containers are declared. For example, the vector:
 
 ```cpp
 static std::vector<base_allocation, system_allocator<base_allocation>> frees;
