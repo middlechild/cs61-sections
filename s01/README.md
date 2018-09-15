@@ -586,8 +586,8 @@ std::vector<T, system_allocator<T>> my_vec;
 
 // If you want to use std::map or std::unordered_map
 // It looks a bit awful because of C++ template specialization rules
-std::map<K, V, std::less<K>, system_allocator<std::pair<K, V>>> my_map;
-std::unordered_map<K, V, std::hash<K>, std::equal_to<K>, system_allocator<std::pair<K, V>>> my_hash;
+std::map<K, V, std::less<K>, system_allocator<std::pair<const K, V>>> my_map;
+std::unordered_map<K, V, std::hash<K>, std::equal_to<K>, system_allocator<std::pair<const K, V>>> my_hash;
 
 // Even strings need an allocator! Don’t use `std::string`, use
 std::basic_string<char, std::char_traits<char>, system_allocator<char>> my_string;
