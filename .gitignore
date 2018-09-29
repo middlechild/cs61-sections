@@ -18,3 +18,5 @@ core*
 tags
 tags.*
 typescript
+
+.idea
