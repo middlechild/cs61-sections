@@ -1,4 +1,4 @@
-PROGRAMS = eve_returns
+PROGRAMS = exit2
 all: $(PROGRAMS)
 
 include ../common/rules.mk
